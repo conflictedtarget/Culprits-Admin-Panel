@@ -430,23 +430,28 @@ local Section = Tab:AddSection({
 })
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
+local antiRagdollActive = false
 
 Tab:AddButton({
     Name = "Anti Ragdoll",
     Callback = function()
-        if character and character:FindFirstChild("Humanoid") then
-            local humanoid = character.Humanoid
-            humanoid:ChangeState(Enum.HumanoidStateType.Seated)
-            humanoid.AutoRotate = true
-            humanoid.Health = humanoid.MaxHealth
-            local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
-            
-            -- Loop to check if ragdolled and stop ragdoll if true
-            game:GetService("RunService").Heartbeat:Connect(function()
-                if ragdollModule and ragdollModule.isRagdolled(character) then
-                    ragdollModule.stopRagdoll(character)
-                end
-            end)
+        antiRagdollActive = not antiRagdollActive
+
+        if antiRagdollActive then
+            if character and character:FindFirstChild("Humanoid") then
+                local humanoid = character.Humanoid
+                humanoid:ChangeState(Enum.HumanoidStateType.Seated)
+                humanoid.AutoRotate = true
+                humanoid.Health = humanoid.MaxHealth
+                local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+                game:GetService("RunService").Heartbeat:Connect(function()
+                    if antiRagdollActive and ragdollModule and ragdollModule.isRagdolled(character) then
+                        ragdollModule.stopRagdoll(character)
+                    end
+                end)
+            end
+        else
+            print("Anti Ragdoll Disabled")
         end
     end    
 })
@@ -454,6 +459,8 @@ Tab:AddButton({
 Tab:AddButton({
     Name = "Un Anti Ragdoll",
     Callback = function()
+        antiRagdollActive = false
+        
         if character and character:FindFirstChild("Humanoid") then
             local humanoid = character.Humanoid
             humanoid:ChangeState(Enum.HumanoidStateType.Physics)
@@ -465,6 +472,7 @@ Tab:AddButton({
         end
     end    
 })
+
 
 
 
