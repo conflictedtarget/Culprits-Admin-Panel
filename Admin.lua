@@ -70,6 +70,53 @@ Tab:AddTextbox({
 		game.Workspace.CurrentCamera.FieldOfView = (Value)
 	end	  
 })
+
+local Section = Tab:AddSection({
+	Name = "Reset Speed/Jump/Fov"
+})
+Tab:AddButton({
+	Name = "Speed",
+	Callback = function()
+      		local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid.WalkSpeed = 16
+  	end    
+})
+Tab:AddButton({
+	Name = "Jump",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character
+
+local jumpHeight = 50
+
+local humanoid = character:WaitForChild("Humanoid")
+
+humanoid.JumpPower = jumpHeight
+  	end    
+})
+Tab:AddButton({
+	Name = "Fov",
+	Callback = function()
+      		game.Workspace.CurrentCamera.FieldOfView = 70
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "Basic"
+})
+Tab:AddButton({
+	Name = "Reset",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.Health = 0
+  	end    
+})
+Tab:AddButton({
+	Name = "Rejoin",
+	Callback = function()
+      		wait(1)	
+game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+  	end    
+})
+
 local Section = Tab:AddSection({
 	Name = "Fun"
 })
@@ -172,51 +219,6 @@ game:GetService("UserInputService").jumpRequest:Connect(function()
         game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
     end
 end)
-  	end    
-})
-local Section = Tab:AddSection({
-	Name = "Reset Speed/Jump/Fov"
-})
-Tab:AddButton({
-	Name = "Speed",
-	Callback = function()
-      		local humanoid = game.Players.LocalPlayer.Character.Humanoid
-humanoid.WalkSpeed = 16
-  	end    
-})
-Tab:AddButton({
-	Name = "Jump",
-	Callback = function()
-      		local player = game.Players.LocalPlayer
-local character = player.Character
-
-local jumpHeight = 50
-
-local humanoid = character:WaitForChild("Humanoid")
-
-humanoid.JumpPower = jumpHeight
-  	end    
-})
-Tab:AddButton({
-	Name = "Fov",
-	Callback = function()
-      		game.Workspace.CurrentCamera.FieldOfView = 70
-  	end    
-})
-local Section = Tab:AddSection({
-	Name = "Basic"
-})
-Tab:AddButton({
-	Name = "Reset",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.Humanoid.Health = 0
-  	end    
-})
-Tab:AddButton({
-	Name = "Rejoin",
-	Callback = function()
-      		wait(1)	
-game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
   	end    
 })
 
@@ -322,7 +324,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "teleport",
+	Name = "Teleport",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -450,7 +452,7 @@ StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
 
 Tab:AddLabel("Settings")
 Tab:AddButton({
-	Name = "Hide UI",
+	Name = "Kill UI",
 	Callback = function()
       		OrionLib:Destroy()
   	end    
