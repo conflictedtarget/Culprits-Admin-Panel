@@ -420,14 +420,6 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
-
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
-local antiRagdollEnabled = false
-local antiRagdollConnection
-
-
 local Tab = Window:MakeTab({
 	Name = "Ragdoll Engine",
 	Icon = "rbxassetid://4483345998",
@@ -436,6 +428,8 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Currently Testing!"
 })
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
 
 Tab:AddButton({
     Name = "Anti Ragdoll",
@@ -445,18 +439,9 @@ Tab:AddButton({
             humanoid:ChangeState(Enum.HumanoidStateType.Seated)
             humanoid.AutoRotate = true
             humanoid.Health = humanoid.MaxHealth
-
+            local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
             if ragdollModule and ragdollModule.isRagdolled(character) then
                 ragdollModule.stopRagdoll(character)
-            end
-
-            if not antiRagdollEnabled then
-                antiRagdollEnabled = true
-                antiRagdollConnection = game:GetService("RunService").Heartbeat:Connect(function()
-                    if ragdollModule and ragdollModule.isRagdolled(character) then
-                        ragdollModule.stopRagdoll(character)
-                    end
-                end)
             end
         end
     end    
@@ -470,18 +455,12 @@ Tab:AddButton({
             humanoid:ChangeState(Enum.HumanoidStateType.Physics)
             humanoid.AutoRotate = true
         end
-
-        if antiRagdollConnection then
-            antiRagdollConnection:Disconnect()
-            antiRagdollEnabled = false
-        end
-
+        local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
         if ragdollModule then
             ragdollModule.startRagdoll(character)
         end
     end    
 })
-
 
 
 local Tab = Window:MakeTab({
