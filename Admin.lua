@@ -23,22 +23,55 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-Tab:AddLabel("welcome: " .. name)
-Tab:AddLabel("game: " .. map)
+Tab:AddLabel("Welcome, " .. name)
+Tab:AddLabel("Current Game: " .. map)
 local Section = Tab:AddSection({
-	Name = "by:" .. owner
+	Name = "Made By: " .. owner
 })
 
+
 local Tab = Window:MakeTab({
-	Name = "Commands",
+	Name = "player",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "commands"
+	Name = "Player"
+})
+Tab:AddTextbox({
+	Name = "Speed",
+	Default = "16",
+	TextDisappear = false,
+	Callback = function(Value)
+		local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid.WalkSpeed = (Value)
+	end	  
+})
+Tab:AddTextbox({
+	Name = "Jump",
+	Default = "50",
+	TextDisappear = false,
+	Callback = function(Value)
+		local player = game.Players.LocalPlayer
+local character = player.Character
+
+local jumpHeight = (Value)
+
+local humanoid = character:WaitForChild("Humanoid")
+
+humanoid.JumpPower = jumpHeight
+	end	  
+})
+Tab:AddTextbox({
+	Name = "Fov",
+	Default = "70",
+	TextDisappear = false,
+	Callback = function(Value)
+		game.Workspace.CurrentCamera.FieldOfView = (Value)
+	end	  
 })
 Tab:AddButton({
-	Name = ";ball",
+	Name = "Ball",
 	Callback = function()
       	                local UserInputService = game:GetService("UserInputService")
                 local RunService = game:GetService("RunService")
@@ -137,47 +170,6 @@ game:GetService("UserInputService").jumpRequest:Connect(function()
     end
 end)
   	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "player",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "Player"
-})
-Tab:AddTextbox({
-	Name = "Speed",
-	Default = "16",
-	TextDisappear = false,
-	Callback = function(Value)
-		local humanoid = game.Players.LocalPlayer.Character.Humanoid
-humanoid.WalkSpeed = (Value)
-	end	  
-})
-Tab:AddTextbox({
-	Name = "Jump",
-	Default = "50",
-	TextDisappear = false,
-	Callback = function(Value)
-		local player = game.Players.LocalPlayer
-local character = player.Character
-
-local jumpHeight = (Value)
-
-local humanoid = character:WaitForChild("Humanoid")
-
-humanoid.JumpPower = jumpHeight
-	end	  
-})
-Tab:AddTextbox({
-	Name = "Fov",
-	Default = "70",
-	TextDisappear = false,
-	Callback = function(Value)
-		game.Workspace.CurrentCamera.FieldOfView = (Value)
-	end	  
 })
 local Section = Tab:AddSection({
 	Name = "Reset Speed/Jump/Fov"
@@ -291,24 +283,15 @@ Tab:AddLabel("To disable, just jump")
 
 
 local Tab = Window:MakeTab({
-	Name = "script hub",
+	Name = "Script Hub",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
-})
-Tab:AddLabel("script hub:")
-local Section = Tab:AddSection({
-	Name = "admin"
+	Name = "Admin"
 })
 Tab:AddButton({
-	Name = "infinite yield",
+	Name = "Infinite Yeild",
 	Callback = function()
       		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-  	end    
-})
-Tab:AddButton({
-	Name = "Reviz admin",
-	Callback = function()
-      		loadstring(game:HttpGetAsync("https://pastebin.com/raw/Caniwq2N"))()
   	end    
 })
 local Section = Tab:AddSection({
@@ -321,7 +304,7 @@ Tab:AddButton({
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "Good Scripts"
+	Name = "Lighting Scripts"
 })
 Tab:AddButton({
 	Name = "Remove Shadows",
@@ -330,9 +313,9 @@ Tab:AddButton({
   	end    
 })
 Tab:AddButton({
-	Name = "f3x",
+	Name = "Fix Shadows",
 	Callback = function()
-      		loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
+      		game.Lighting.GlobalShadows = true
   	end    
 })
 local Section = Tab:AddSection({
@@ -425,7 +408,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "Loops on you:"
+	Name = "Loops"
 })
 Tab:AddLabel("No way to disable, so use with caution")
 Tab:AddButton({
