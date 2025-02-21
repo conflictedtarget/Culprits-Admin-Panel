@@ -204,7 +204,7 @@ Tab:AddButton({
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "Basics"
+	Name = "Basic"
 })
 Tab:AddButton({
 	Name = "Reset",
@@ -220,9 +220,6 @@ game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlay
   	end    
 })
 
-game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args))
-	end	  
-})
 local Section = Tab:AddSection({
 	Name = "Movement"
 })
@@ -238,7 +235,7 @@ local function disableMovement()
     character:WaitForChild("Humanoid").WalkSpeed = 0
 end
 
-disableMovement()
+disableMovement({
   	end    
 })
 Tab:AddButton({
@@ -448,7 +445,6 @@ Tab:AddButton({
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
   	end    
 })
-
 
 Tab:AddLabel("Settings")
 Tab:AddButton({
