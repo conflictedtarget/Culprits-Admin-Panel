@@ -235,7 +235,7 @@ local function disableMovement()
     character:WaitForChild("Humanoid").WalkSpeed = 0
 end
 
-disableMovement({
+disableMovement()
   	end    
 })
 Tab:AddButton({
@@ -277,6 +277,8 @@ local Tab = Window:MakeTab({
 	Name = "Script Hub",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+})
+local Section = Tab:AddSection({
 	Name = "Admin"
 })
 Tab:AddButton({
