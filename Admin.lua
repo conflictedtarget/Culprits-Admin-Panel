@@ -421,59 +421,51 @@ tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
 local Tab = Window:MakeTab({
-    Name = "Ragdoll Engine",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
+	Name = "Ragdoll Engine",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
-
 local Section = Tab:AddSection({
-    Name = "Testing"
+	Name = "Currently Testing!"
 })
-
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
-local antiRagdollEnabled = false
 
-local function updateAntiRagdoll()
-    if not character or not character:FindFirstChild("Humanoid") then return end
-    
-    local humanoid = character.Humanoid
-    local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
-    
-    if antiRagdollEnabled then
-        humanoid:ChangeState(Enum.HumanoidStateType.Seated)
-        humanoid.AutoRotate = true
-        humanoid.Health = humanoid.MaxHealth
-        if ragdollModule and ragdollModule.stopRagdoll then
-            ragdollModule.stopRagdoll(character)
+Tab:AddButton({
+    Name = "Anti Ragdoll",
+    Callback = function()
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            humanoid:ChangeState(Enum.HumanoidStateType.Seated)
+            humanoid.AutoRotate = true
+            humanoid.Health = humanoid.MaxHealth
+            local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+            
+            -- Loop to check if ragdolled and stop ragdoll if true
+            game:GetService("RunService").Heartbeat:Connect(function()
+                if ragdollModule and ragdollModule.isRagdolled(character) then
+                    ragdollModule.stopRagdoll(character)
+                end
+            end)
         end
-    else
-        humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-        humanoid.AutoRotate = true
-        if ragdollModule and ragdollModule.startRagdoll then
-            ragdollModule.startRagdoll(character)
-        end
-    end
-end
-
-Tab:AddToggle({
-    Name = "Toggle Anti Ragdoll",
-    Default = false,
-    Callback = function(Value)
-        antiRagdollEnabled = Value
-        updateAntiRagdoll()
-    end
+    end    
 })
 
--- Update anti-ragdoll state when the character changes
-player.CharacterAdded:Connect(function(newCharacter)
-    character = newCharacter
-    wait(1) -- Wait for the character to fully load
-    updateAntiRagdoll()
-end)
+Tab:AddButton({
+    Name = "Un Anti Ragdoll",
+    Callback = function()
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+            humanoid.AutoRotate = true
+        end
+        local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+        if ragdollModule then
+            ragdollModule.startRagdoll(character)
+        end
+    end    
+})
 
--- Initial update
-updateAntiRagdoll()
 
 
 local Tab = Window:MakeTab({
