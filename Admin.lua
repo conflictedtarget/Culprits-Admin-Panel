@@ -461,7 +461,25 @@ Tab:AddButton({
     end    
 })
 
+local Section = Tab:AddSection({
+	Name = "Currently Testing!"
+})
 
+Tab:AddButton({
+    Name = "Spam Land Mines",
+    Callback = function()
+        for _, object in pairs(game:GetDescendants()) do
+            if string.find(object.Name, "Land") or string.find(object.Name, "Mine") then
+                if object:FindFirstChild("Activate") then
+                    local activate = object:FindFirstChild("Activate")
+                    if activate and activate:IsA("BindableFunction") then
+                        activate:Fire()
+                    end
+                end
+            end
+        end
+    end    
+})
 
 local Tab = Window:MakeTab({
 	Name = "Loops",
