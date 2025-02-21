@@ -220,6 +220,19 @@ game:GetService("UserInputService").jumpRequest:Connect(function()
 end)
   	end    
 })
+Tab:AddButton({
+    Name = "Zero Gravity",
+    Callback = function()
+        game:GetService("Workspace").Gravity = 0
+    end    
+})
+
+Tab:AddButton({
+    Name = "Fix Gravity",
+    Callback = function()
+        game:GetService("Workspace").Gravity = 196.2
+    end    
+})
 
 local Section = Tab:AddSection({
 	Name = "Movement"
@@ -413,7 +426,31 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "Coming Soon.."
+	Name = "Currently Testing!"
+})
+Tab:AddButton({
+    Name = "Anti Ragdoll",
+    Callback = function()
+        local character = game.Players.LocalPlayer.Character
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+            humanoid.AutoRotate = false 
+            humanoid.Health = humanoid.MaxHealth
+        end
+    end    
+})
+
+Tab:AddButton({
+    Name = "Un Anti Ragdoll",
+    Callback = function()
+        local character = game.Players.LocalPlayer.Character
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+            humanoid.AutoRotate = true
+        end
+    end    
 })
 
 local Tab = Window:MakeTab({
