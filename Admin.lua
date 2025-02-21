@@ -420,6 +420,14 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+local antiRagdollEnabled = false
+local antiRagdollConnection
+
+
 local Tab = Window:MakeTab({
 	Name = "Ragdoll Engine",
 	Icon = "rbxassetid://4483345998",
@@ -428,11 +436,6 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Currently Testing!"
 })
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
-local antiRagdollEnabled = false
-local antiRagdollConnection
 
 Tab:AddButton({
     Name = "Anti Ragdoll",
