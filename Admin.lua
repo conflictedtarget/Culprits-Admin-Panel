@@ -428,39 +428,48 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Currently Testing!"
 })
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
 local antiRagdollEnabled = false
 local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
-local ragdollEvent = game:GetService("ReplicatedStorage"):WaitForChild("RagdollEvent") -- Adjust this path to the actual remote event in your game
 
--- Anti Ragdoll Button
 Tab:AddButton({
     Name = "Anti Ragdoll",
     Callback = function()
-        -- Enable Anti Ragdoll (disables ragdoll RPC)
-        antiRagdollEnabled = true
-
-        -- Disable the Ragdoll Event (assuming it's a RemoteEvent)
-        if ragdollEvent then
-            ragdollEvent:Disconnect() -- This will disconnect the event listener
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            humanoid:ChangeState(Enum.HumanoidStateType.Seated)
+            humanoid.AutoRotate = true
+            humanoid.Health = humanoid.MaxHealth
+            
+            -- Ensure ragdoll is stopped once
+            if not antiRagdollEnabled then
+                antiRagdollEnabled = true
+                -- Stop ragdoll if it's active
+                if ragdollModule and ragdollModule.isRagdolled(character) then
+                    ragdollModule.stopRagdoll(character)
+                end
+            end
         end
     end    
 })
 
--- Un Anti Ragdoll Button
 Tab:AddButton({
     Name = "Un Anti Ragdoll",
     Callback = function()
-        -- Disable Anti Ragdoll (reenables ragdoll RPC)
-        antiRagdollEnabled = false
-
-        -- Re-enable the Ragdoll Event (assuming you can reconnect it)
-        if ragdollEvent then
-            ragdollEvent.OnServerEvent:Connect(function(player, target)
-                -- Original ragdoll functionality
-                if target then
-                    ragdollModule.startRagdoll(target)
-                end
-            end)
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+            humanoid.AutoRotate = true
+        end
+        
+        -- Re-enable ragdoll if Anti Ragdoll was enabled
+        if antiRagdollEnabled then
+            antiRagdollEnabled = false
+            if ragdollModule then
+                ragdollModule.startRagdoll(character)
+            end
         end
     end    
 })
