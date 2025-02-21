@@ -428,24 +428,20 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Currently Testing!"
 })
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-
 local antiRagdollEnabled = false
 local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+local ragdollEvent = game:GetService("ReplicatedStorage"):WaitForChild("RagdollEvent") -- Adjust this path to the actual remote event in your game
 
 -- Anti Ragdoll Button
 Tab:AddButton({
     Name = "Anti Ragdoll",
     Callback = function()
-        if character and character:FindFirstChild("Humanoid") then
-            -- Enable Anti Ragdoll
-            antiRagdollEnabled = true
+        -- Enable Anti Ragdoll (disables ragdoll RPC)
+        antiRagdollEnabled = true
 
-            -- Optionally, stop ragdolling immediately if it's already active
-            if ragdollModule and ragdollModule.isRagdolled(character) then
-                ragdollModule.stopRagdoll(character)
-            end
+        -- Disable the Ragdoll Event (assuming it's a RemoteEvent)
+        if ragdollEvent then
+            ragdollEvent:Disconnect() -- This will disconnect the event listener
         end
     end    
 })
@@ -454,19 +450,20 @@ Tab:AddButton({
 Tab:AddButton({
     Name = "Un Anti Ragdoll",
     Callback = function()
-        if character and character:FindFirstChild("Humanoid") then
-            -- Disable Anti Ragdoll
-            antiRagdollEnabled = false
+        -- Disable Anti Ragdoll (reenables ragdoll RPC)
+        antiRagdollEnabled = false
+
+        -- Re-enable the Ragdoll Event (assuming you can reconnect it)
+        if ragdollEvent then
+            ragdollEvent.OnServerEvent:Connect(function(player, target)
+                -- Original ragdoll functionality
+                if target then
+                    ragdollModule.startRagdoll(target)
+                end
+            end)
         end
     end    
 })
-
--- Listen for ragdoll state and stop ragdolling if Anti Ragdoll is enabled
-game:GetService("RunService").Heartbeat:Connect(function()
-    if antiRagdollEnabled and ragdollModule and ragdollModule.isRagdolled(character) then
-        ragdollModule.stopRagdoll(character)
-    end
-end)
 
 
 
