@@ -431,61 +431,42 @@ local Section = Tab:AddSection({
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
+local antiRagdollEnabled = false
 local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
 
-local antiRagdollConnection
-local antiRagdollEnabled = false
-
+-- Anti Ragdoll Button
 Tab:AddButton({
     Name = "Anti Ragdoll",
     Callback = function()
         if character and character:FindFirstChild("Humanoid") then
-            local humanoid = character.Humanoid
-            humanoid:ChangeState(Enum.HumanoidStateType.Seated)
-            humanoid.AutoRotate = true
-            humanoid.Health = humanoid.MaxHealth
+            -- Enable Anti Ragdoll
+            antiRagdollEnabled = true
 
-            -- Stop ragdoll if it's active
+            -- Optionally, stop ragdolling immediately if it's already active
             if ragdollModule and ragdollModule.isRagdolled(character) then
                 ragdollModule.stopRagdoll(character)
-            end
-
-            -- Start the loop to continuously stop ragdolling if not already enabled
-            if not antiRagdollEnabled then
-                antiRagdollEnabled = true
-                antiRagdollConnection = game:GetService("RunService").Heartbeat:Connect(function()
-                    if ragdollModule and ragdollModule.isRagdolled(character) then
-                        ragdollModule.stopRagdoll(character)
-                    end
-                end)
             end
         end
     end    
 })
 
+-- Un Anti Ragdoll Button
 Tab:AddButton({
     Name = "Un Anti Ragdoll",
     Callback = function()
         if character and character:FindFirstChild("Humanoid") then
-            local humanoid = character.Humanoid
-            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-            humanoid.AutoRotate = true
-        end
-
-        -- Stop the loop for Anti Ragdoll if it exists
-        if antiRagdollConnection then
-            antiRagdollConnection:Disconnect()
+            -- Disable Anti Ragdoll
             antiRagdollEnabled = false
-        end
-
-        -- Allow ragdolling again
-        if ragdollModule then
-            ragdollModule.startRagdoll(character)
         end
     end    
 })
+
+-- Listen for ragdoll state and stop ragdolling if Anti Ragdoll is enabled
+game:GetService("RunService").Heartbeat:Connect(function()
+    if antiRagdollEnabled and ragdollModule and ragdollModule.isRagdolled(character) then
+        ragdollModule.stopRagdoll(character)
+    end
+end)
 
 
 
