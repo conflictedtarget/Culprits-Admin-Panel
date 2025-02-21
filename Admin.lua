@@ -428,15 +428,21 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Currently Testing!"
 })
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
 Tab:AddButton({
     Name = "Anti Ragdoll",
     Callback = function()
-        local character = game.Players.LocalPlayer.Character
         if character and character:FindFirstChild("Humanoid") then
             local humanoid = character.Humanoid
-            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-            humanoid.AutoRotate = false 
+            humanoid:ChangeState(Enum.HumanoidStateType.Seated)
+            humanoid.AutoRotate = true
             humanoid.Health = humanoid.MaxHealth
+            local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+            if ragdollModule and ragdollModule.isRagdolled(character) then
+                ragdollModule.stopRagdoll(character)
+            end
         end
     end    
 })
@@ -444,14 +450,18 @@ Tab:AddButton({
 Tab:AddButton({
     Name = "Un Anti Ragdoll",
     Callback = function()
-        local character = game.Players.LocalPlayer.Character
         if character and character:FindFirstChild("Humanoid") then
             local humanoid = character.Humanoid
             humanoid:ChangeState(Enum.HumanoidStateType.Physics)
             humanoid.AutoRotate = true
         end
+        local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+        if ragdollModule then
+            ragdollModule.startRagdoll(character)
+        end
     end    
 })
+
 
 local Tab = Window:MakeTab({
 	Name = "Loops",
