@@ -11,7 +11,7 @@ Version = '1.0'
 Owner = "Culprit"
 
 local OrionLib = loadstring(game:HttpGet(theme))()
-local Window = OrionLib:MakeWindow({Name = "Better Admin☃️ - v" .. Version, HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "Culprits Admin Panel+ : v" .. Version, HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 wait(1)
 -- api load
@@ -424,12 +424,6 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";F3x",
-    Callback = function()
-        loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
-    end    
-})
-Tab:AddButton({
     Name = "TP To Closest Player",
     Callback = function()
         local p = game.Players.LocalPlayer
@@ -534,7 +528,7 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = "Enabme Movement",
+    Name = "Enable Movement",
     Callback = function()
         local player = game.Players.LocalPlayer
         local character = player.Character or player.CharacterAdded:Wait()
@@ -566,7 +560,7 @@ Tab:AddButton({
     end    
 })
 Tab:AddTextbox({
-    Name = ";health",
+    Name = "Health",
     Default = "100",
     TextDisappear = false,
     Callback = function(Value)
@@ -576,32 +570,32 @@ Tab:AddTextbox({
     end    
 })
 Tab:AddButton({
-    Name = ";reset",
+    Name = "Reset",
     Callback = function()
         game.Players.LocalPlayer.Character.Humanoid.Health = 0
     end    
 })
 Tab:AddButton({
-    Name = ";rejoin",
+    Name = "Rejoin",
     Callback = function()
         wait(1)    
         game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
     end    
 })
 Tab:AddButton({
-    Name = ";exit",
+    Name = "Exit",
     Callback = function()
         game:shutdown() 
     end    
 })
 
 local Tab = Window:MakeTab({
-    Name = "config",
+    Name = "Settings",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 local Section = Tab:AddSection({
-    Name = "Config"
+    Name = "Settings"
 })
 Tab:AddButton({
     Name = "Script Hub Menu",

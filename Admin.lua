@@ -19,7 +19,7 @@ local map = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).N
 
 -- tabs
 local Tab = Window:MakeTab({
-	Name = "home",
+	Name = "Home",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -31,7 +31,7 @@ local Section = Tab:AddSection({
 
 
 local Tab = Window:MakeTab({
-	Name = "player",
+	Name = "Player",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -219,15 +219,6 @@ Tab:AddButton({
 game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
   	end    
 })
-Tab:AddTextbox({
-	Name = "Chat",
-	Default = "Hello",
-	TextDisappear = false,
-	Callback = function(Value)
-		local args = {
-    [1] = (Value) ,
-    [2] = "All"
-}
 
 game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args))
 	end	  
