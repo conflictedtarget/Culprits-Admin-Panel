@@ -19,7 +19,7 @@ local map = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).N
 
 -- tabs
 local Tab = Window:MakeTab({
-	Name = "Home",
+	Name = "home",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -31,7 +31,7 @@ local Section = Tab:AddSection({
 
 
 local Tab = Window:MakeTab({
-	Name = "Player",
+	Name = "player",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })

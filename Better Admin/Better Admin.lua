@@ -28,10 +28,10 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-Tab:AddLabel("Welcome: " .. name)
+Tab:AddLabel("Welcome, " .. name)
 Tab:AddLabel("Game: " .. map)
 local Section = Tab:AddSection({
-	Name = "made by: " .. Owner
+	Name = "Made By: " .. Owner
 })
 
 local Tab = Window:MakeTab({
