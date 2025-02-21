@@ -281,7 +281,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "Admin"
+	Name = "FE / Admin Scripts"
 })
 Tab:AddButton({
 	Name = "Infinite Yeild",
@@ -289,17 +289,29 @@ Tab:AddButton({
       		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
   	end    
 })
-local Section = Tab:AddSection({
-	Name = "Fly"
+Tab:AddButton({
+	Name = "FakeVerified V2",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastebin.com/raw/xYtmSfL5", true))()
+  	end    
 })
 Tab:AddButton({
-	Name = "Fly",
+	Name = "Universal Aimbot",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/agreed69-scripts/open-src-scripts/refs/heads/main/Universal%20Aimbot.lua",true))()
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "Fly Scripts"
+})
+Tab:AddButton({
+	Name = "HD Admin Fly",
 	Callback = function()
       		loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Fly-gui/refs/heads/main/Hhhhh"))()
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "Good Scripts"
+	Name = "Lighting Scripts"
 })
 Tab:AddButton({
 	Name = "Remove Shadows",
@@ -396,6 +408,14 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
   	end    
 })
+local Tab = Window:MakeTab({
+	Name = "Ragdoll Engine",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Player"
+})
 
 local Tab = Window:MakeTab({
 	Name = "Loops",
@@ -433,7 +453,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "Roblox system"
+	Name = "UI System"
 })
 Tab:AddButton({
 	Name = "Hide Chat",
