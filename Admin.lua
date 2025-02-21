@@ -23,11 +23,19 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+
 Tab:AddLabel("Welcome, " .. name)
 Tab:AddLabel("Current Game: " .. map)
+local discordLink = "https://discord.com/invite/3SWhurkbxM"
+local discordLabel = Tab:AddLabel("Join our Discord!")
+discordLabel.MouseButton1Click:Connect(function()
+    game:GetService("UrlService"):OpenUrl(discordLink)
+end)
+
 local Section = Tab:AddSection({
-	Name = "Made By: " .. owner
+	Name = "Created By " .. owner
 })
+
 
 
 local Tab = Window:MakeTab({
@@ -414,7 +422,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "Player"
+	Name = "Coming Soon.."
 })
 
 local Tab = Window:MakeTab({
