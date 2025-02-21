@@ -31,7 +31,7 @@ local Tab = Window:MakeTab({
 Tab:AddLabel("Welcome: " .. name)
 Tab:AddLabel("Game: " .. map)
 local Section = Tab:AddSection({
-	Name = "by:" .. Owner
+	Name = "made by: " .. Owner
 })
 
 local Tab = Window:MakeTab({
@@ -43,7 +43,7 @@ local Section = Tab:AddSection({
 	Name = "Commands"
 })
 Tab:AddTextbox({
-	Name = ";speed",
+	Name = "Speed",
 	Default = "16",
 	TextDisappear = false,
 	Callback = function(Value)
@@ -52,7 +52,7 @@ humanoid.WalkSpeed = (Value)
 	end	  
 })
 Tab:AddTextbox({
-	Name = ";jump",
+	Name = "Jump Power",
 	Default = "50",
 	TextDisappear = false,
 	Callback = function(Value)
@@ -67,7 +67,7 @@ humanoid.JumpPower = jumpHeight
 	end	  
 })
 Tab:AddTextbox({
-	Name = ";fov",
+	Name = "Fov",
 	Default = "70",
 	TextDisappear = false,
 	Callback = function(Value)
@@ -75,7 +75,7 @@ Tab:AddTextbox({
 	end	  
 })
 Tab:AddButton({
-	Name = ";noclip",
+	Name = "Noclip",
 	Callback = function()
       		local player = game.Players.LocalPlayer 
 local character = player.Character or player.CharacterAdded:Wait()
@@ -110,7 +110,7 @@ noclip = true
   	end    
 })
 Tab:AddButton({
-	Name = ";clip",
+	Name = "Clip",
 	Callback = function()
       		local player = game.Players.LocalPlayer 
 local character = player.Character or player.CharacterAdded:Wait()
@@ -145,7 +145,7 @@ noclip = false
   	end    
 })
 Tab:AddButton({
-	Name = ";sit",
+	Name = "Sit",
 	Callback = function()
       		local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -160,7 +160,7 @@ humanoid.Jumping:Connect(onJump)
   	end    
 })
 Tab:AddButton({
-	Name = ";infinite jump",
+	Name = "Infinite Jump",
 	Callback = function()
       		local infinjump = true
 game:GetService("UserInputService").jumpRequest:Connect(function()
@@ -171,7 +171,7 @@ end)
   	end    
 })
 Tab:AddButton({
-	Name = ";rtx",
+	Name = "Rtx",
 	Callback = function()
       		-- Credits to Instance Serializer for helping me convert the Tokyowami shrine whatever thing to luau
 if not game:IsLoaded() then
@@ -409,7 +409,7 @@ L.ShadowSoftness = 0
 L.Ambient = Color3.fromRGB(59, 33, 27)
 end)
 Tab:AddButton({
-    Name = ";TP Tool",
+    Name = "TP Tool",
     Callback = function()
         mouse = game.Players.LocalPlayer:GetMouse()
         tool = Instance.new("Tool")
@@ -430,7 +430,7 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";teleport to closest players",
+    Name = "TP To Closest Player",
     Callback = function()
         local p = game.Players.LocalPlayer
 
@@ -460,7 +460,7 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";copy your username",
+    Name = "Copy Your Username",
     Callback = function()
         local Players = game:GetService("Players")
 
@@ -469,27 +469,27 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";hide chat",
+    Name = "Hide Chat",
     Callback = function()
         local StarterGui = game:GetService("StarterGui")
         StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
     end    
 })
 Tab:AddButton({
-    Name = ";show chat",
+    Name = "Show Chat",
     Callback = function()
         local StarterGui = game:GetService("StarterGui")
         StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
     end    
 })
 Tab:AddButton({
-    Name = ";console",
+    Name = "Console",
     Callback = function()
         game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
     end    
 })
 Tab:AddButton({
-    Name = ";first person",
+    Name = "First Person",
     Callback = function()
         local player = game.Players.LocalPlayer
 
@@ -498,7 +498,7 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";disable first person",
+    Name = "Disable First Person",
     Callback = function()
         local player = game.Players.LocalPlayer
 
@@ -507,19 +507,19 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";disable shadows",
+    Name = "Disable Shadows",
     Callback = function()
         game.Lighting.GlobalShadows = false
     end    
 })
 Tab:AddButton({
-    Name = ";enable shadows",
+    Name = "Enable Shadows",
     Callback = function()
         game.Lighting.GlobalShadows = true
     end    
 })
 Tab:AddButton({
-    Name = ";disable movement",
+    Name = "Disable Movement",
     Callback = function()
         local player = game.Players.LocalPlayer
         local character = player.Character or player.CharacterAdded:Wait()
@@ -534,7 +534,7 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";enable movement",
+    Name = "Enabme Movement",
     Callback = function()
         local player = game.Players.LocalPlayer
         local character = player.Character or player.CharacterAdded:Wait()
@@ -549,7 +549,7 @@ Tab:AddButton({
     end    
 })
 Tab:AddButton({
-    Name = ";walk straight",
+    Name = "Lock Facing Position",
     Callback = function()
         local player = game.Players.LocalPlayer
         local character = player.Character or player.CharacterAdded:Wait()
@@ -601,10 +601,10 @@ local Tab = Window:MakeTab({
     PremiumOnly = false
 })
 local Section = Tab:AddSection({
-    Name = "settings"
+    Name = "Config"
 })
 Tab:AddButton({
-    Name = "script hub menu",
+    Name = "Script Hub Menu",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/conflictedtarget/Culprits-Admin-Panel/main/Better%20Admin/Gui/script%20hub.lua", true))()
     end   

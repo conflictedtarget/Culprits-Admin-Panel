@@ -102,7 +102,7 @@ Tab:AddButton({
   	end    
 })
 Tab:AddButton({
-	Name = ";sit",
+	Name = "Sit",
 	Callback = function()
       		local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -117,7 +117,7 @@ humanoid.Jumping:Connect(onJump)
   	end    
 })
 Tab:AddButton({
-	Name = ";infinite jump",
+	Name = "Infinite Jump",
 	Callback = function()
       		local infinjump = true
 game:GetService("UserInputService").jumpRequest:Connect(function()
@@ -128,7 +128,7 @@ end)
   	end    
 })
 Tab:AddButton({
-	Name = ";disable infinite jump",
+	Name = "Disable Infinite Jump",
 	Callback = function()
       		local infinjump = false
 game:GetService("UserInputService").jumpRequest:Connect(function()
@@ -145,10 +145,10 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "player"
+	Name = "Player"
 })
 Tab:AddTextbox({
-	Name = "speed",
+	Name = "Speed",
 	Default = "16",
 	TextDisappear = false,
 	Callback = function(Value)
@@ -157,7 +157,7 @@ humanoid.WalkSpeed = (Value)
 	end	  
 })
 Tab:AddTextbox({
-	Name = "jump",
+	Name = "Jump",
 	Default = "50",
 	TextDisappear = false,
 	Callback = function(Value)
@@ -172,7 +172,7 @@ humanoid.JumpPower = jumpHeight
 	end	  
 })
 Tab:AddTextbox({
-	Name = "fov",
+	Name = "Fov",
 	Default = "70",
 	TextDisappear = false,
 	Callback = function(Value)
@@ -180,17 +180,17 @@ Tab:AddTextbox({
 	end	  
 })
 local Section = Tab:AddSection({
-	Name = "reset speed/jump/fov"
+	Name = "Reset Speed/Jump/Fov"
 })
 Tab:AddButton({
-	Name = "speed",
+	Name = "Speed",
 	Callback = function()
       		local humanoid = game.Players.LocalPlayer.Character.Humanoid
 humanoid.WalkSpeed = 16
   	end    
 })
 Tab:AddButton({
-	Name = "jump",
+	Name = "Jump",
 	Callback = function()
       		local player = game.Players.LocalPlayer
 local character = player.Character
@@ -203,30 +203,30 @@ humanoid.JumpPower = jumpHeight
   	end    
 })
 Tab:AddButton({
-	Name = "fov",
+	Name = "Fov",
 	Callback = function()
       		game.Workspace.CurrentCamera.FieldOfView = 70
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "basics"
+	Name = "Basics"
 })
 Tab:AddButton({
-	Name = "reset",
+	Name = "Reset",
 	Callback = function()
       		game.Players.LocalPlayer.Character.Humanoid.Health = 0
   	end    
 })
 Tab:AddButton({
-	Name = "rejoin",
+	Name = "Rejoin",
 	Callback = function()
       		wait(1)	
 game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
   	end    
 })
 Tab:AddTextbox({
-	Name = "chat",
-	Default = "hello",
+	Name = "Chat",
+	Default = "Hello",
 	TextDisappear = false,
 	Callback = function(Value)
 		local args = {
@@ -238,10 +238,10 @@ game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents")
 	end	  
 })
 local Section = Tab:AddSection({
-	Name = "movement"
+	Name = "Movement"
 })
 Tab:AddButton({
-	Name = "disable movements",
+	Name = "Disable Movement",
 	Callback = function()
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -256,7 +256,7 @@ disableMovement()
   	end    
 })
 Tab:AddButton({
-	Name = "enable movements",
+	Name = "Enable Movement",
 	Callback = function()
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -271,7 +271,7 @@ enableMovement()
   	end    
 })
 Tab:AddButton({
-	Name = "walk straight",
+	Name = "Lock Facing Position",
 	Callback = function()
       		local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -312,25 +312,19 @@ Tab:AddButton({
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "fly"
+	Name = "Fly"
 })
 Tab:AddButton({
-	Name = "fly v3",
+	Name = "Fly",
 	Callback = function()
-      		loadstring(game:HttpGet('https://pastebin.com/raw/YSL3xKYU'))()
-  	end    
-})
-Tab:AddButton({
-	Name = "vfly",
-	Callback = function()
-      		loadstring(game:HttpGet("https://pastebin.com/raw/MHE1cbWF"))()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Fly-gui/refs/heads/main/Hhhhh"))()
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "good scripts"
+	Name = "Good Scripts"
 })
 Tab:AddButton({
-	Name = "remove shadows",
+	Name = "Remove Shadows",
 	Callback = function()
       		game.Lighting.GlobalShadows = false
   	end    
@@ -342,10 +336,10 @@ Tab:AddButton({
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "powers"
+	Name = "Powers"
 })
 Tab:AddButton({
-	Name = "wall walking",
+	Name = "Wall Walking",
 	Callback = function()
       		loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Walk-on-Walls-Or-ceilings-1469"))()
   	end    
@@ -357,10 +351,10 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "teleport"
+	Name = "Teleport"
 })
 Tab:AddButton({
-	Name = "tp closest players",
+	Name = "TP To Closest Player",
 	Callback = function()
       		local p = game.Players.LocalPlayer
 
@@ -390,7 +384,7 @@ teleportToClosestPlayer()
   	end    
 })
 Tab:AddButton({
-	Name = "tp farthest players",
+	Name = "TP To Farthest Player",
 	Callback = function()
       		local players = game.Players:GetPlayers()
 local farthestPlayer = nil
@@ -435,7 +429,7 @@ local Section = Tab:AddSection({
 })
 Tab:AddLabel("No way to disable, so use with caution")
 Tab:AddButton({
-	Name = "jump loop",
+	Name = "Loop Jump",
 	Callback = function()
       		while true do
    -- Makes the character jump
@@ -446,7 +440,7 @@ end
   	end    
 })
 Tab:AddButton({
-	Name = "die loop",
+	Name = "Loop Die",
 	Callback = function()
       		while true do 
 game.Players.LocalPlayer.Character.Humanoid.Health = 0
@@ -456,193 +450,7 @@ end
 })
 
 local Tab = Window:MakeTab({
-	Name = "prison life tp",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "prison life tp"
-})
-Tab:AddButton({
-	Name = "base",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-946.5443115234375, 94.1287612915039, 2065.466552734375)
-  	end    
-})
-Tab:AddButton({
-	Name = "kill players",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(818.3822631835938, 130.03990173339844, 2583.103271484375)
-  	end    
-})
-Tab:AddButton({
-	Name = "police weapon",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(823.9112548828125, 99.98998260498047, 2257.491943359375)
-  	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "prison life scripts",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "scripts"
-})
-Tab:AddButton({
-	Name = "aimbot",
-	Callback = function()
-      		local Players = game.Players
-local LocalPlayer = Players.LocalPlayer
-local GetPlayers = Players.GetPlayers
-local Camera = workspace.CurrentCamera
-local WTSP = Camera.WorldToScreenPoint
-local FindFirstChild = game.FindFirstChild
-local Vector2_new = Vector2.new
-local Mouse = LocalPlayer.GetMouse(LocalPlayer)
-function ClosestChar()
-    local Max, Close = math.huge
-    for I,V in pairs(GetPlayers(Players)) do
-        if V ~= LocalPlayer and V.Team ~= LocalPlayer.Team and V.Character then
-            local Head = FindFirstChild(V.Character, "Head")
-            if Head then
-                local Pos, OnScreen = WTSP(Camera, Head.Position)
-                if OnScreen then
-                    local Dist = (Vector2_new(Pos.X, Pos.Y) - Vector2_new(Mouse.X, Mouse.Y)).Magnitude
-                    if Dist < Max then
-                        Max = Dist
-                        Close = V.Character
-                    end
-                end
-            end
-        end
-    end
-    return Close
-end
-
-local MT = getrawmetatable(game)
-local __namecall = MT.__namecall
-setreadonly(MT, false)
-MT.__namecall = newcclosure(function(self, ...)
-    local Method = getnamecallmethod()
-    if Method == "FindPartOnRay" and not checkcaller() and tostring(getfenv(0).script) == "GunInterface" then
-        local Character = ClosestChar()
-        if Character then
-            return Character.Head, Character.Head.Position
-        end
-    end
-
-    return __namecall(self, ...)
-end)
-setreadonly(MT, true)
-  	end    
-})
-Tab:AddButton({
-	Name = "esp lines",
-	Callback = function()
-local function AddLine(player)
-  local Camera = workspace.Camera
-  local Line = Drawing.new("Line")
-  Line.Thickness = 1
-  Line.Color3 = player.TeamColor or Color3.fromRGB(255, 0, 0)
-  Line.Visible = true
-  
-  local plrChar = game.Players.LocalPlayer.Character
-  if plrChar and player.Character then
-    task.spawn(function()
-      while task.wait() do
-        local Vector, OnScreen = Camera:worldToViewportPoint(player.Character.PrimaryPart.Position)
-        
-        if OnScreen then
-          Line.Visible = true
-          Line.From = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 1)
-          Line.To = Vector2.new(Vector.X, Vector.Y)
-        else
-          Line.Visible = false
-        end
-      end
-    end)
-  else
-    Line.Visible = false
-  end
-end
-
-for _,v in pairs(game:GetService("Players"):GetPlayers()) do
-  if v.Name ~= game.Players.LocalPlayer.Name then
-    AddLine(v)
-  end
-end
-  	end    
-})
-Tab:AddButton({
-	Name = "disable esp",
-	Callback = function()
-      		Line.Visible = false
-  	end    
-})
-local Section = Tab:AddSection({
-	Name = "infinite ammo"
-})
-Tab:AddButton({
-	Name = "M9",
-	Callback = function()
-      	wait(1)
-	-- Generated by Hydroxide's Upvalue Scanner: https://github.com/Upbolt/Hydroxide
-
-local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
-
-local scriptPath = game:GetService("Players").LocalPlayer.Backpack.M9.GunInterface
-local closureName = "createRay"
-local upvalueIndex = 1
-local closureConstants = {
-	[1] = "Bullets",
-	[2] = "magnitude",
-	[3] = 10,
-	[4] = "math",
-	[5] = "random",
-	[7] = "Vector3"
-}
-
-local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
-local value = 9000
-local elementIndex = "CurrentAmmo"
-
-
--- DO NOT RELY ON THIS FEATURE TO PRODUCE 100% FUNCTIONAL SCRIPTS
-debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
-
-wait(1)
-
--- Generated by Hydroxide's Upvalue Scanner: https://github.com/Upbolt/Hydroxide
-
-local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
-
-local scriptPath = game:GetService("Players").LocalPlayer.Backpack.M9.GunInterface
-local closureName = "createRay"
-local upvalueIndex = 1
-local closureConstants = {
-	[1] = "Bullets",
-	[2] = "magnitude",
-	[3] = 10,
-	[4] = "math",
-	[5] = "random",
-	[7] = "Vector3"
-}
-
-local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
-local value = 9000
-local elementIndex = "MaxAmmo"
-
-
--- DO NOT RELY ON THIS FEATURE TO PRODUCE 100% FUNCTIONAL SCRIPTS
-debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
-  	end    
-})
-Tab:AddLabel("not working")
-
-local Tab = Window:MakeTab({
-	Name = "hide ui",
+	Name = "Chat",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -650,212 +458,30 @@ local Section = Tab:AddSection({
 	Name = "Roblox system"
 })
 Tab:AddButton({
-	Name = "hide chat",
+	Name = "Hide Chat",
 	Callback = function()
       		local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
   	end    
 })
 Tab:AddButton({
-	Name = "unhide chat",
+	Name = "Unhide Chat",
 	Callback = function()
       		local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = "keyboard",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "keyboard"
-})
+
+Tab:AddLabel("Settings")
 Tab:AddButton({
-	Name = "keyboard v1",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
-  	end    
-})
-Tab:AddButton({
-	Name = "create keys",
-	Callback = function()
-      		loadstring(game:HttpGet(('https://pastefy.app/Ujm4HWxh/raw'),true))()
-  	end    
-})
-
--- create scripts
-local Tab = Window:MakeTab({
-	Name = "create scripts",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "create scripts"
-})
-Tab:AddButton({
-	Name = "simple spy",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/main.lua"))()
-  	end    
-})
-Tab:AddButton({
-	Name = "hydroxide",
-	Callback = function()
-      		local owner = "Hosvile"
-local branch = "revision"
-
-local function webImport(file)
-    return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/MC-Hydroxide/%s/%s.lua"):format(owner, branch, file)), file .. '.lua')()
-end
-
-webImport("init")
-webImport("ui/main")
-  	end    
-})
-Tab:AddButton({
-	Name = "create teleport",
-	Callback = function()
-      		loadstring(game:HttpGet(('https://raw.githubusercontent.com/ZetraDDoS/Roblox-Zetra/main/Zetra%20HUB.lua'),true))()
-  	end    
-})
-Tab:AddButton({
-	Name = "open console",
-	Callback = function()
-      		game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-  	end    
-})
-
--- brookhaven
-local Tab = Window:MakeTab({
-	Name = "brookhaven",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "brookhaven"
-})
-Tab:AddButton({
-	Name = "Ice hub",
-	Callback = function()
-      		loadstring(game:HttpGet('https://icehub.cf/IceHubLoader'))()
-  	end    
-})
-Tab:AddButton({
-	Name = "redz hub",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/REDzHUB/main/REDzHUB"))()
-  	end    
-})
-Tab:AddButton({
-	Name = "colorful name",
-	Callback = function()
-      		while true do 
-      local args = {
-    [1] = "PickingRPNameColor",
-    [2] = Color3.new(0, 0.2550922632217407, 1)
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = "PickingRPNameColor",
-    [2] = Color3.new(0, 1, 0.11916005611419678)
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = "PickingRPNameColor",
-    [2] = Color3.new(1, 0, 0.09715032577514648)
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = "PickingRPNameColor",
-    [2] = Color3.new(1, 0, 0.834061861038208)
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = "PickingRPNameColor",
-    [2] = Color3.new(0.6147799491882324, 0, 1)
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = "PickingRPNameColor",
-    [2] = Color3.new(1, 0.8638885617256165, 0)
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = "PickingRPNameColor",
-    [2] = Color3.new(1, 0.6158433556556702, 0)
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-    wait(1) 
-end
-  	end    
-})
-
--- prison life
-local Tab = Window:MakeTab({
-	Name = "prison life",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "prison life"
-})
-Tab:AddButton({
-	Name = "Tiger Admin",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/dalloc2/Roblox/main/TigerAdmin.lua"))()
-  	end    
-})
-Tab:AddButton({
-	Name = "prisonware",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Denverrz/scripts/master/PRISONWARE_v1.3.txt"))();
-  	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "arsenal",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "arsenal"
-})
-Tab:AddButton({
-	Name = "tect menu",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Infinity2346/Tect-Menu/main/Arsenalscript.txt"))()
-  	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "config",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-Tab:AddLabel("settings")
-Tab:AddButton({
-	Name = "hide ui",
+	Name = "Hide UI",
 	Callback = function()
       		OrionLib:Destroy()
   	end    
 })
 Tab:AddButton({
-	Name = "hide infinite yield",
+	Name = "Hide Infinite Yeild",
 	Callback = function()
       		function maximizeHolder()
 					if StayOpen == false then

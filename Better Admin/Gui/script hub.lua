@@ -52,7 +52,7 @@ button2.TextColor3 = Color3.new(1, 1, 1)
 button2.TextSize = 14
 button2.Size = UDim2.new(0, 100, 0, 30)
 button2.Position = UDim2.new(0, 130, 0, 40)
-button2.Text = "infinite yield"
+button2.Text = "Infinite Yield"
 button2.Parent = window
 
 button2.MouseButton1Click:Connect(function()
@@ -65,22 +65,9 @@ button3.TextColor3 = Color3.new(1, 1, 1)
 button3.TextSize = 14
 button3.Size = UDim2.new(0, 100, 0, 30)
 button3.Position = UDim2.new(0, 10, 0, 80)
-button3.Text = "fly"
+button3.Text = "Fly"
 button3.Parent = window
 
 button3.MouseButton1Click:Connect(function()
-     loadstring(game:HttpGet('https://pastebin.com/raw/YSL3xKYU'))()
-end)
-
-local button4 = Instance.new("TextButton")
-button4.BackgroundColor3 = Color3.new(0, 0, 0)
-button4.TextColor3 = Color3.new(1, 1, 1)
-button4.TextSize = 14
-button4.Size = UDim2.new(0, 100, 0, 30)
-button4.Position = UDim2.new(0, 130, 0, 80)
-button4.Text = "vfly"
-button4.Parent = window
-
-button4.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/MHE1cbWF"))()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Fly-gui/refs/heads/main/Hhhhh"))()
 end)
