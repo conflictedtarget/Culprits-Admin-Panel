@@ -70,6 +70,9 @@ Tab:AddTextbox({
 		game.Workspace.CurrentCamera.FieldOfView = (Value)
 	end	  
 })
+local Section = Tab:AddSection({
+	Name = "Fun"
+})
 Tab:AddButton({
 	Name = "Ball",
 	Callback = function()
@@ -304,7 +307,7 @@ Tab:AddButton({
   	end    
 })
 local Section = Tab:AddSection({
-	Name = "Lighting Scripts"
+	Name = "Good Scripts"
 })
 Tab:AddButton({
 	Name = "Remove Shadows",
