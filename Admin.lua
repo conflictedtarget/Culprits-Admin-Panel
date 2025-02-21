@@ -29,7 +29,6 @@ local Section = Tab:AddSection({
 	Name = "Created By " .. owner
 })
 
-
 local Tab = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
