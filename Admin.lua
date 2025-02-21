@@ -295,6 +295,13 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "FE / Admin Scripts"
 })
+
+Tab:AddButton({
+	Name = "Culprits Admin",
+	Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/conflictedtarget/Culprits-Admin-Client/refs/heads/main/Culprits-Admin.lua'))()
+  	end    
+})
 Tab:AddButton({
 	Name = "Infinite Yeild",
 	Callback = function()
