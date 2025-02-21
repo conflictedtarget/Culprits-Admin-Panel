@@ -430,66 +430,52 @@ local Section = Tab:AddSection({
 })
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
-
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-
-local immune = false
+local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+local antiRagdollEnabled = false
+local antiRagdollConnection
 
 Tab:AddButton({
     Name = "Anti Ragdoll",
     Callback = function()
-        immune = true
         if character and character:FindFirstChild("Humanoid") then
             local humanoid = character.Humanoid
             humanoid:ChangeState(Enum.HumanoidStateType.Seated)
             humanoid.AutoRotate = true
             humanoid.Health = humanoid.MaxHealth
-        end
 
-        local function disableTools()
-            for _, tool in pairs(character:GetChildren()) do
-                if tool:IsA("Tool") then
-                    tool.Enabled = false
-                end
+            if ragdollModule and ragdollModule.isRagdolled(character) then
+                ragdollModule.stopRagdoll(character)
+            end
+
+            if not antiRagdollEnabled then
+                antiRagdollEnabled = true
+                antiRagdollConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                    if ragdollModule and ragdollModule.isRagdolled(character) then
+                        ragdollModule.stopRagdoll(character)
+                    end
+                end)
             end
         end
-
-        disableTools()
-
-        character.ChildAdded:Connect(function(child)
-            if child:IsA("Tool") then
-                child.Enabled = false
-            end
-        end)
     end    
 })
 
 Tab:AddButton({
     Name = "Un Anti Ragdoll",
     Callback = function()
-        immune = false
         if character and character:FindFirstChild("Humanoid") then
             local humanoid = character.Humanoid
             humanoid:ChangeState(Enum.HumanoidStateType.Physics)
             humanoid.AutoRotate = true
         end
 
-        local function enableTools()
-            for _, tool in pairs(character:GetChildren()) do
-                if tool:IsA("Tool") then
-                    tool.Enabled = true
-                end
-            end
+        if antiRagdollConnection then
+            antiRagdollConnection:Disconnect()
+            antiRagdollEnabled = false
         end
 
-        enableTools()
-
-        character.ChildAdded:Connect(function(child)
-            if child:IsA("Tool") then
-                child.Enabled = true
-            end
-        end)
+        if ragdollModule then
+            ragdollModule.startRagdoll(character)
+        end
     end    
 })
 
