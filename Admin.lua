@@ -428,30 +428,20 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Currently Testing!"
 })
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local antiRagdollActive = false
+local disabledRagdolls = {}
 
 Tab:AddButton({
     Name = "Anti Ragdoll",
     Callback = function()
-        antiRagdollActive = not antiRagdollActive
-
-        if antiRagdollActive then
-            if character and character:FindFirstChild("Humanoid") then
-                local humanoid = character.Humanoid
-                humanoid:ChangeState(Enum.HumanoidStateType.Seated)
-                humanoid.AutoRotate = true
-                humanoid.Health = humanoid.MaxHealth
-                local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
-                game:GetService("RunService").Heartbeat:Connect(function()
-                    if antiRagdollActive and ragdollModule and ragdollModule.isRagdolled(character) then
-                        ragdollModule.stopRagdoll(character)
-                    end
-                end)
+        local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
+        
+        for _, object in pairs(game:GetDescendants()) do
+            if string.find(object.Name, "Ragdoll") then
+                if ragdollModule and ragdollModule.isRagdolled(object) then
+                    table.insert(disabledRagdolls, object)
+                    ragdollModule.stopRagdoll(object)
+                end
             end
-        else
-            print("Anti Ragdoll Disabled")
         end
     end    
 })
@@ -459,20 +449,17 @@ Tab:AddButton({
 Tab:AddButton({
     Name = "Un Anti Ragdoll",
     Callback = function()
-        antiRagdollActive = false
-        
-        if character and character:FindFirstChild("Humanoid") then
-            local humanoid = character.Humanoid
-            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-            humanoid.AutoRotate = true
-        end
         local ragdollModule = require(game:GetService("ReplicatedStorage"):WaitForChild("RagdollModule"))
-        if ragdollModule then
-            ragdollModule.startRagdoll(character)
+
+        for _, object in pairs(disabledRagdolls) do
+            if ragdollModule and object then
+                ragdollModule.startRagdoll(object)
+            end
         end
+        
+        disabledRagdolls = {}
     end    
 })
-
 
 
 
