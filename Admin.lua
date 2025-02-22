@@ -309,7 +309,7 @@ Tab:AddButton({
   	end    
 })
 Tab:AddButton({
-	Name = "FE Animation + Fling",
+	Name = "FE Animation + Fling (R6)",
 	Callback = function()
       		loadstring(game:HttpGet("https://pastefy.app/59mJGQGe/raw"))()
   	end    
