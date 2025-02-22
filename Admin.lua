@@ -27,6 +27,10 @@ Tab:AddLabel("Welcome, " .. name)
 Tab:AddLabel("Current Game: " .. map)
 local Section = Tab:AddSection({
 	Name = "Created By " .. owner
+	Tab:AddLabel("")
+	Tab:AddLabel("Discord Server:")
+	Tab:AddLabel("dsc.gg/culpritssociety")
+	Tab:AddLabel("(Type In Browser)")
 })
 
 local Tab = Window:MakeTab({
