@@ -1,4 +1,5 @@
 # Culprits Admin Panel
+```https://dsc.gg/culpritssociety```
 
 ## status: Online 
 ## api: Online
