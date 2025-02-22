@@ -11,7 +11,6 @@ local Window = OrionLib:MakeWindow({Name = "Culprits Admin Panel - v" .. Version
 wait(1)
 -- api load
 loadstring(game:HttpGet("https://raw.githubusercontent.com/conflictedtarget/Culprits-Admin-Panel/main/api%20load.lua"))()
-
 local player = game.Players.LocalPlayer
 local name = player.DisplayName
 
@@ -25,11 +24,6 @@ local Tab = Window:MakeTab({
 })
 Tab:AddLabel("Welcome, " .. name)
 Tab:AddLabel("Current Game: " .. map)
-Tab:AddLabel("")
-Tab:AddLabel("Discord Server:")
-Tab:AddLabel("dsc.gg/culpritssociety")
-Tab:AddLabel("(Type In Browser)")
-Tab:AddLabel("")
 local Section = Tab:AddSection({
 	Name = "Created By " .. owner
 })
