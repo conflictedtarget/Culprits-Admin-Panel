@@ -28,6 +28,43 @@ Tab:AddLabel("Current Game: " .. map)
 local Section = Tab:AddSection({
 	Name = "Created By " .. owner
 })
+Tab:AddButton({
+    Name = "Discord Server",
+    Callback = function()
+        local discordLink = "https://dsc.gg/culpritssociety"
+        setclipboard(discordLink)
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Discord Link",
+            Text = "Discord link copied to your clipboard! Paste it in your browser.",
+            Duration = 7
+        })
+    end
+})
+Tab:AddButton({
+    Name = "Roblox Group",
+    Callback = function()
+        local discordLink = "https://www.roblox.com/communities/32715078/Culprits-Society#!/about"
+        setclipboard(discordLink)
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Roblox Group",
+            Text = "Roblox Group link copied to your clipboard! Paste it in your browser.",
+            Duration = 7
+        })
+    end
+})
+Tab:AddButton({
+    Name = "Youtube Channel",
+    Callback = function()
+        local discordLink = "https://www.youtube.com/@conflictedtarget"
+        setclipboard(discordLink)
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Youtube Channel",
+            Text = "Youtube Channel link copied to your clipboard! Paste it in your browser.",
+            Duration = 7
+        })
+    end
+})
+
 
 local Tab = Window:MakeTab({
 	Name = "Player",
