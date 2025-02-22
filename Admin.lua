@@ -309,6 +309,12 @@ Tab:AddButton({
   	end    
 })
 Tab:AddButton({
+	Name = "FE Animation + Fling",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastefy.app/59mJGQGe/raw"))()
+  	end    
+})
+Tab:AddButton({
 	Name = "FakeVerified V2",
 	Callback = function()
       		loadstring(game:HttpGet("https://pastebin.com/raw/xYtmSfL5", true))()
