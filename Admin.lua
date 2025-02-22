@@ -11,6 +11,7 @@ local Window = OrionLib:MakeWindow({Name = "Culprits Admin Panel - v" .. Version
 wait(1)
 -- api load
 loadstring(game:HttpGet("https://raw.githubusercontent.com/conflictedtarget/Culprits-Admin-Panel/main/api%20load.lua"))()
+game:GetService("GuiService"):OpenBrowserWindow("https://dsc.gg/culpritssociety") 
 local player = game.Players.LocalPlayer
 local name = player.DisplayName
 
