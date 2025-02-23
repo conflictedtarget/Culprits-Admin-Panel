@@ -1,5 +1,5 @@
 -- version
-Version = '2.0.1'
+Version = '2.0.8'
 
 -- by
 owner = "Culprit"
@@ -64,6 +64,7 @@ Tab:AddButton({
         })
     end
 })
+
 
 
 local Tab = Window:MakeTab({
@@ -372,155 +373,6 @@ humanoid.Jumping:Connect(onJump)
   	end    
 })
 
-
-local Tab = Window:MakeTab({
-	Name = "Script Hub",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "Admin Scripts"
-})
-
-Tab:AddButton({
-	Name = "Culprits Admin (BETA)",
-	Callback = function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/conflictedtarget/Culprits-Admin-Client/refs/heads/main/Culprits-Admin.lua'))()
-  	end    
-})
-Tab:AddButton({
-	Name = "Infinite Yeild",
-	Callback = function()
-      		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-  	end    
-})
-local Section = Tab:AddSection({
-	Name = "FE Scripts"
-})
-Tab:AddButton({
-	Name = "FE Fling Animation (R6)",
-	Callback = function()
-      		loadstring(game:HttpGet("https://pastefy.app/59mJGQGe/raw"))()
-  	end    
-})
-Tab:AddButton({
-	Name = "FE Zombie Animation (R6)",
-	Callback = function()
-      		loadstring(game:HttpGet("https://pastefy.app/JOWniO6o/raw"))()
-  	end    
-})
-Tab:AddButton({
-	Name = "FE Troll Animation (18+)",
-	Callback = function()
-      		loadstring(game:HttpGet("https://pastebin.com/raw/FWwdST5Y"))()
-  	end    
-})
-Tab:AddButton({
-	Name = "FE FakeVerified V2",
-	Callback = function()
-      		loadstring(game:HttpGet("https://pastebin.com/raw/xYtmSfL5", true))()
-  	end    
-})
-local Section = Tab:AddSection({
-	Name = "Universal Cheats"
-})
-Tab:AddButton({
-	Name = "Aimbot",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/agreed69-scripts/open-src-scripts/refs/heads/main/Universal%20Aimbot.lua",true))()
-  	end    
-})
-
-local Section = Tab:AddSection({
-	Name = "Fly Scripts"
-})
-Tab:AddButton({
-	Name = "HD Admin Fly",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Fly-gui/refs/heads/main/Hhhhh"))()
-  	end    
-})
-local Section = Tab:AddSection({
-	Name = "Lighting Scripts"
-})
-Tab:AddButton({
-	Name = "Remove Shadows",
-	Callback = function()
-      		game.Lighting.GlobalShadows = false
-  	end    
-})
-Tab:AddButton({
-	Name = "Fix Shadows",
-	Callback = function()
-      		game.Lighting.GlobalShadows = true
-  	end    
-})
-local Section = Tab:AddSection({
-	Name = "Powers"
-})
-Tab:AddButton({
-	Name = "Wall Walking",
-	Callback = function()
-      		loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Walk-on-Walls-Or-ceilings-1469"))()
-  	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "Ragdoll Engine",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "Ragdoll Clients"
-})
-local disabledRagdolls = {}
-
-Tab:AddButton({
-	Name = "Nil Hub (OP)",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/12xQ/NilHub.Lua/refs/heads/main/Ragdoll%20Engine"))()
-  	end    
-})
-
-Tab:AddButton({
-	Name = "System Broken",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"))()
-  	end    
-})
-local Tab = Window:MakeTab({
-	Name = "Loops",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "Caution"
-})
-Tab:AddLabel("No way to disable these.")
-local Section = Tab:AddSection({
-	Name = "Loops"
-})
-Tab:AddButton({
-	Name = "Loop Jump",
-	Callback = function()
-      		while true do
-   -- Makes the character jump
-local character = game.Players.LocalPlayer.Character
-character:WaitForChild("Humanoid").Jump = true
-    wait(1) 
-end
-  	end    
-})
-Tab:AddButton({
-	Name = "Loop Die",
-	Callback = function()
-      		while true do 
-game.Players.LocalPlayer.Character.Humanoid.Health = 0
-    wait(1) 
-end
-  	end    
-})
-
 local Tab = Window:MakeTab({
 	Name = "Settings",
 	Icon = "rbxassetid://4483345998",
@@ -578,5 +430,174 @@ Tab:AddButton({
 				getgenv().IY_LOADED = false
   	end   
 })
+
+
+local Tab = Window:MakeTab({
+	Name = "Script Hub",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Admin Scripts"
+})
+
+Tab:AddButton({
+	Name = "Culprits Admin (BETA)",
+	Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/conflictedtarget/Culprits-Admin-Client/refs/heads/main/Culprits-Admin.lua'))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Nameless Admin",
+	Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source'))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Infinite Yeild",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "FE Scripts"
+})
+Tab:AddButton({
+	Name = "FE Seraphic Blade (R6)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastefy.app/59mJGQGe/raw"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "FE Zombie Animation (R6)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastefy.app/JOWniO6o/raw"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "FE Troll Animation (18+)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastebin.com/raw/FWwdST5Y"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "FE FakeVerified V2",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastebin.com/raw/xYtmSfL5", true))()
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "Universal Cheats"
+})
+Tab:AddButton({
+	Name = "Aimbot",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/agreed69-scripts/open-src-scripts/refs/heads/main/Universal%20Aimbot.lua",true))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Hit Box Expander",
+	Callback = function()
+      		loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Update-script-hitbox-9326"))()
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Fly Scripts"
+})
+Tab:AddButton({
+	Name = "HD Admin Fly",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Fly-gui/refs/heads/main/Hhhhh"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Superman Fly Tool (Click To Fly)",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/b4-st/Superman-Fly/refs/heads/main/Script.lua'))()
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "Lighting Scripts"
+})
+Tab:AddButton({
+	Name = "Remove Shadows",
+	Callback = function()
+      		game.Lighting.GlobalShadows = false
+  	end    
+})
+Tab:AddButton({
+	Name = "Fix Shadows",
+	Callback = function()
+      		game.Lighting.GlobalShadows = true
+  	end    
+})
+local Section = Tab:AddSection({
+	Name = "Powers"
+})
+Tab:AddButton({
+	Name = "Wall Walking",
+	Callback = function()
+      		loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Walk-on-Walls-Or-ceilings-1469"))()
+  	end    
+})
+
+local Tab = Window:MakeTab({
+    Name = "━━━━━━━━",
+    Icon = "",
+    PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Wyd Bro You Clicked On The Divider XD"
+})
+
+
+
+Tab.Enabled = false
+
+local Tab = Window:MakeTab({
+	Name = "Rivals",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Rivals Clients"
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Fisch",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Fisch Clients"
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Ragdoll Engine",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Ragdoll Clients"
+})
+local disabledRagdolls = {}
+
+Tab:AddButton({
+	Name = "Nil Hub (OP)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/12xQ/NilHub.Lua/refs/heads/main/Ragdoll%20Engine"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "System Broken",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"))()
+  	end    
+})
+
 
 OrionLib:Init()
