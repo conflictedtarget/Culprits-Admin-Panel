@@ -463,6 +463,12 @@ local Section = Tab:AddSection({
 	Name = "FE Scripts"
 })
 Tab:AddButton({
+	Name = "FE Nameless Animation v4 (R6)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Fe-Silly-animation-V4-16636"))()
+  	end    
+})
+Tab:AddButton({
 	Name = "FE Seraphic Blade (R6)",
 	Callback = function()
       		loadstring(game:HttpGet("https://pastefy.app/59mJGQGe/raw"))()
@@ -563,6 +569,13 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Rivals Clients"
 })
+Tab:AddButton({
+	Name = "Azure Modded - Rivals & Dahood (OP)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Actyrn/Scripts/main/AzureModded"))()
+  	end    
+})
+
 
 
 local Tab = Window:MakeTab({
@@ -573,7 +586,36 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Fisch Clients"
 })
+Tab:AddButton({
+	Name = "Homo Hack (OP)",
+	Callback = function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/dementiaenjoyer/homohack/main/loader.lua"))()
+  	end    
+})
+Tab:AddButton({
 
+	Name = "Zenith Hub",
+	Callback = function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/refs/heads/main/Script"))()
+  	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Dahood",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Dahood Clients"
+})
+
+Tab:AddButton({
+	Name = "Azure Modded - Rivals & Dahood (OP)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Actyrn/Scripts/main/AzureModded"))()
+  	end    
+})
 
 local Tab = Window:MakeTab({
 	Name = "Ragdoll Engine",
