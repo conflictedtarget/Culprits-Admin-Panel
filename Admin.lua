@@ -137,6 +137,55 @@ Tab:AddButton({
   	end    
 })
 local Section = Tab:AddSection({
+	Name = "Teleport"
+})
+Tab:AddButton({
+	Name = "TP To Closest Player",
+	Callback = function()
+      		local p = game.Players.LocalPlayer
+
+local function teleportToClosestPlayer()
+    local c = nil
+    local d = math.huge
+    
+    for _, plr in pairs(game.Players:GetPlayers()) do
+        if plr ~= p then
+            local dist = (plr.Character and plr.Character:FindFirstChild("HumanoidRootPart")) and
+                             (p.Character and p.Character:FindFirstChild("HumanoidRootPart")) and
+                             (plr.Character.HumanoidRootPart.Position - p.Character.HumanoidRootPart.Position).Magnitude or math.huge
+            
+            if dist < d then
+                d = dist
+                c = plr
+            end
+        end
+    end
+    
+    if c then
+        p.Character:MoveTo(c.Character.HumanoidRootPart.Position)
+    end
+end
+
+teleportToClosestPlayer()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "TP Tool",
+	Callback = function()
+      	 mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Equip to Click TP"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+  	end    
+})
+local Section = Tab:AddSection({
 	Name = "Basic"
 })
 Tab:AddButton({
@@ -235,6 +284,10 @@ humanoid.Sit = true
 humanoid.Jumping:Connect(onJump)
   	end    
 })
+
+local Section = Tab:AddSection({
+	Name = "Movement"
+})
 Tab:AddButton({
 	Name = "Infinite Jump",
 	Callback = function()
@@ -271,9 +324,6 @@ Tab:AddButton({
     end    
 })
 
-local Section = Tab:AddSection({
-	Name = "Movement"
-})
 Tab:AddButton({
 	Name = "Disable Movement",
 	Callback = function()
@@ -321,7 +371,6 @@ humanoid.AutoRotate = false
 humanoid.Jumping:Connect(onJump)
   	end    
 })
-Tab:AddLabel("To disable, just jump")
 
 
 local Tab = Window:MakeTab({
@@ -330,11 +379,11 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
-	Name = "FE / Admin Scripts"
+	Name = "Admin Scripts"
 })
 
 Tab:AddButton({
-	Name = "Culprits Admin",
+	Name = "Culprits Admin (BETA)",
 	Callback = function()
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/conflictedtarget/Culprits-Admin-Client/refs/heads/main/Culprits-Admin.lua'))()
   	end    
@@ -345,24 +394,43 @@ Tab:AddButton({
       		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
   	end    
 })
+local Section = Tab:AddSection({
+	Name = "FE Scripts"
+})
 Tab:AddButton({
-	Name = "FE Animation + Fling (R6)",
+	Name = "FE Fling Animation (R6)",
 	Callback = function()
       		loadstring(game:HttpGet("https://pastefy.app/59mJGQGe/raw"))()
   	end    
 })
 Tab:AddButton({
-	Name = "FakeVerified V2",
+	Name = "FE Zombie Animation (R6)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastefy.app/JOWniO6o/raw"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "FE Troll Animation (18+)",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastebin.com/raw/FWwdST5Y"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "FE FakeVerified V2",
 	Callback = function()
       		loadstring(game:HttpGet("https://pastebin.com/raw/xYtmSfL5", true))()
   	end    
 })
+local Section = Tab:AddSection({
+	Name = "Universal Cheats"
+})
 Tab:AddButton({
-	Name = "Universal Aimbot",
+	Name = "Aimbot",
 	Callback = function()
       		loadstring(game:HttpGet("https://raw.githubusercontent.com/agreed69-scripts/open-src-scripts/refs/heads/main/Universal%20Aimbot.lua",true))()
   	end    
 })
+
 local Section = Tab:AddSection({
 	Name = "Fly Scripts"
 })
@@ -398,79 +466,6 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "Teleport",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "Teleport"
-})
-Tab:AddButton({
-	Name = "TP To Closest Player",
-	Callback = function()
-      		local p = game.Players.LocalPlayer
-
-local function teleportToClosestPlayer()
-    local c = nil
-    local d = math.huge
-    
-    for _, plr in pairs(game.Players:GetPlayers()) do
-        if plr ~= p then
-            local dist = (plr.Character and plr.Character:FindFirstChild("HumanoidRootPart")) and
-                             (p.Character and p.Character:FindFirstChild("HumanoidRootPart")) and
-                             (plr.Character.HumanoidRootPart.Position - p.Character.HumanoidRootPart.Position).Magnitude or math.huge
-            
-            if dist < d then
-                d = dist
-                c = plr
-            end
-        end
-    end
-    
-    if c then
-        p.Character:MoveTo(c.Character.HumanoidRootPart.Position)
-    end
-end
-
-teleportToClosestPlayer()
-  	end    
-})
-Tab:AddButton({
-	Name = "TP To Farthest Player",
-	Callback = function()
-      		local players = game.Players:GetPlayers()
-local farthestPlayer = nil
-local farthestDistance = 0
-
-for i, player in ipairs(players) do
-    local distance = (player.Character.HumanoidRootPart.Position - Vector3.new(x, y, z)).Magnitude
-    if distance > farthestDistance then
-        farthestPlayer = player
-        farthestDistance = distance
-    end
-end
-
-if farthestPlayer then
-    farthestPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x, y, z)
-end
-  	end    
-})
-Tab:AddButton({
-	Name = "TP Tool",
-	Callback = function()
-      	 mouse = game.Players.LocalPlayer:GetMouse()
-tool = Instance.new("Tool")
-tool.RequiresHandle = false
-tool.Name = "Equip to Click TP"
-tool.Activated:connect(function()
-local pos = mouse.Hit+Vector3.new(0,2.5,0)
-pos = CFrame.new(pos.X,pos.Y,pos.Z)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-end)
-tool.Parent = game.Players.LocalPlayer.Backpack
-  	end    
-})
-local Tab = Window:MakeTab({
 	Name = "Ragdoll Engine",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
@@ -499,9 +494,12 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local Section = Tab:AddSection({
+	Name = "Caution"
+})
+Tab:AddLabel("No way to disable these.")
+local Section = Tab:AddSection({
 	Name = "Loops"
 })
-Tab:AddLabel("No way to disable, so use with caution")
 Tab:AddButton({
 	Name = "Loop Jump",
 	Callback = function()
@@ -546,7 +544,6 @@ StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
   	end    
 })
 
-Tab:AddLabel("Settings")
 Tab:AddButton({
 	Name = "Kill UI",
 	Callback = function()
